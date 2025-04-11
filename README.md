@@ -1,4 +1,4 @@
-# React + Vite + Hono + Cloudflare Workers + Tailwind CSS + Shadcn
+# React + Vite + Hono + Cloudflare Workers + Tailwind CSS + Shadcn + Tanstack Router
 
 <!-- [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template) -->
 
@@ -16,6 +16,7 @@ This template provides a minimal setup for building a React application with Typ
 - [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
 - [**TailwindCSS**](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML.
 - [**Shadcn**](https://ui.shadcn.com/) - A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code.
+- [**Tanstack Router**](https://tanstack.com/router/latest) - A powerful, type-safe router for React, with a focus on performance and developer experience.
 
 ### ✨ Key Features
 
@@ -27,6 +28,7 @@ This template provides a minimal setup for building a React application with Typ
 - 🔄 Full-stack development setup
 - 💅 Tailwind CSS for rapid UI development
 - 🎨 Shadcn for beautiful, accessible components
+- 📚 Tanstack Router for powerful routing capabilities
 
 Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
 
@@ -89,3 +91,4 @@ bunx wrangler deploy
 - [Hono Documentation](https://hono.dev/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Shadcn Documentation](https://ui.shadcn.com/docs)
+- [Tanstack Router Documentation](https://tanstack.com/router/latest/docs/overview)
