@@ -1,10 +1,10 @@
-# React + Vite + Hono + Cloudflare Workers
+# React + Vite + Hono + Cloudflare Workers + Tailwind CSS + Shadcn
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template)
+<!-- [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template) -->
 
-This template provides a minimal setup for building a React application with TypeScript and Vite, designed to run on Cloudflare Workers. It features hot module replacement, ESLint integration, and the flexibility of Workers deployments.
+This template provides a minimal setup for building a React application with TypeScript and Vite, with Tailwind CSS and ShadCN designed to run on Cloudflare Workers. It features hot module replacement, and the flexibility of Workers deployments.
 
-![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public)
+<!-- ![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public) -->
 
 <!-- dash-content-start -->
 
@@ -14,6 +14,8 @@ This template provides a minimal setup for building a React application with Typ
 - [**Vite**](https://vite.dev/) - Lightning-fast build tooling and development server
 - [**Hono**](https://hono.dev/) - Ultralight, modern backend framework
 - [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
+- [**TailwindCSS**](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML.
+- [**Shadcn**](https://ui.shadcn.com/) - A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code.
 
 ### ✨ Key Features
 
@@ -23,6 +25,8 @@ This template provides a minimal setup for building a React application with Typ
 - ⚡ Zero-config deployment to Cloudflare's global network
 - 🎯 API routes with Hono's elegant routing
 - 🔄 Full-stack development setup
+- 💅 Tailwind CSS for rapid UI development
+- 🎨 Shadcn for beautiful, accessible components
 
 Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
 
@@ -33,24 +37,26 @@ Get started in minutes with local development or deploy directly via the Cloudfl
 To start a new project with this template, run:
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/vite-react-template
+git clone https://github.com/yaaamin/vite-react-template
+cd vite-react-template
+git remote remove origin
 ```
 
 A live deployment of this template is available at:
-[https://react-vite-template.templates.workers.dev](https://react-vite-template.templates.workers.dev)
+[https://vite-react-template.cfs-637.workers.dev/](https://vite-react-template.cfs-637.workers.dev/)
 
 ## Development
 
 Install dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 Start the development server with:
 
 ```bash
-npm run dev
+bun dev
 ```
 
 Your application will be available at [http://localhost:5173](http://localhost:5173).
@@ -60,19 +66,19 @@ Your application will be available at [http://localhost:5173](http://localhost:5
 Build your project for production:
 
 ```bash
-npm run build
+bun run build
 ```
 
 Preview your build locally:
 
 ```bash
-npm run preview
+bun run preview
 ```
 
 Deploy your project to Cloudflare Workers:
 
 ```bash
-npx wrangler deploy
+bunx wrangler deploy
 ```
 
 ## Additional Resources
@@ -81,3 +87,5 @@ npx wrangler deploy
 - [Vite Documentation](https://vitejs.dev/guide/)
 - [React Documentation](https://reactjs.org/)
 - [Hono Documentation](https://hono.dev/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Shadcn Documentation](https://ui.shadcn.com/docs)
