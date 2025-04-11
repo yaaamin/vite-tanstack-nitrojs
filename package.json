@@ -1,9 +1,9 @@
 {
-  "name": "vite-react-template",
-  "description": "A template for building a React application with Vite, Hono, and Cloudflare Workers",
-  "version": "0.0.0",
+  "name": "vite-tanstack-router-hono",
+  "description": "A template for building a React application with Vite, Hono, Tanstack Router, Tailwind CSS, Shadcn and Cloudflare Workers",
+  "version": "0.0.1",
   "cloudflare": {
-    "label": "Vite React Template",
+    "label": "Vite React Tanstack Router Hono Template",
     "products": [
       "Workers"
     ],
