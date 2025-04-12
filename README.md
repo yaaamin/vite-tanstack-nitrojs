@@ -39,9 +39,7 @@ Get started in minutes with local development or deploy directly via the Cloudfl
 To start a new project with this template, run:
 
 ```bash
-git clone https://github.com/yaaamin/vite-react-template
-cd vite-react-template
-git remote remove origin
+bun create cloudflare --template https://github.com/yaaamin/vite-tanstack-router-hono
 ```
 
 A live deployment of this template is available at:
