@@ -39,11 +39,11 @@ Get started in minutes with local development or deploy directly via the Cloudfl
 To start a new project with this template, run:
 
 ```bash
-bun create cloudflare --template https://github.com/yaaamin/vite-tanstack-router-hono
+bun create cloudflare --template https://github.com/yaaamin/vite-tanstack-nitrojs
 ```
 
 A live deployment of this template is available at:
-[https://vite-react-template.cfs-637.workers.dev/](https://vite-react-template.cfs-637.workers.dev/)
+[https://vite-tanstack-nitrojs.cfs-637.workers.dev/](https://vite-tanstack-nitrojs.cfs-637.workers.dev/)
 
 ## Development
 
