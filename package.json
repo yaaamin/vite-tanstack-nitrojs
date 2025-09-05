@@ -14,7 +14,19 @@
     "preview_image_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public",
     "dash": true
   },
+  "scripts": {
+    "build": "nitro build && vite build",
+    "deploy": "bun run build && wrangler deploy --config wrangler.jsonc",
+    "dev:wrangler": "wrangler dev --config wrangler.dev.jsonc",
+    "dev": "vite",
+    "preview": "bun run build && vite preview",
+    "types": "wrangler types",
+    "dev:nitro": "concurrently \"vite\" \"nitro dev --port 3000\"",
+    "dev:full": "concurrently \"nitro dev --port 3000\" \"vite\"",
+    "dev:local": "concurrently \"wrangler dev --config wrangler.dev.jsonc\" \"vite\""
+  },
   "dependencies": {
+    "@analogjs/vite-plugin-nitro": "^1.20.2",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.2.4",
     "@radix-ui/react-alert-dialog": "^1.1.7",
@@ -50,6 +62,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
+    "h3": "beta",
     "hono": "4.7.5",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.487.0",
@@ -68,7 +81,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.0.2",
+    "@cloudflare/vite-plugin": "^1.12.3",
     "@eslint/js": "9.23.0",
     "@tanstack/react-router-devtools": "^1.115.3",
     "@tanstack/router-plugin": "^1.115.3",
@@ -76,21 +89,16 @@
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@vitejs/plugin-react": "4.3.4",
+    "concurrently": "^9.2.1",
     "eslint": "9.23.0",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-refresh": "0.4.19",
     "globals": "15.15.0",
+    "nitropack": "^2.12.5",
     "typescript": "5.8.2",
     "typescript-eslint": "8.29.0",
     "vite": "6.2.5",
-    "wrangler": "4.7.0"
-  },
-  "scripts": {
-    "build": "vite build",
-    "deploy": "bun run build && wrangler deploy",
-    "dev": "vite",
-    "preview": "bun run build && vite preview",
-    "types": "wrangler types"
+    "wrangler": "^4.34.0"
   },
   "type": "module"
 }

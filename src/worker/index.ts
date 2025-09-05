@@ -1,8 +1,7 @@
-import { Hono } from "hono";
-const app = new Hono<{ Bindings: Env }>();
-
-app.get("/api/", (c) =>
-  c.json({ name: "Heskell", currentDate: new Date().toISOString() })
-);
-
-export default app;
+export default {
+  async fetch(request: Request, env: any, ctx: ExecutionContext) {
+    const { createNitroApp } = await import('nitropack/runtime')
+    const nitroApp = createNitroApp()
+    return nitroApp.localFetch(request)
+  }
+}
