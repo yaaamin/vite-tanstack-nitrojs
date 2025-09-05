@@ -4,8 +4,9 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import nitro from "@analogjs/vite-plugin-nitro";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     tailwindcss(),
     TanStackRouterVite({
@@ -15,11 +16,39 @@ export default defineConfig({
       apiBase: "/api",
     }),
     react(),
-    cloudflare(),
+    ...(command === "build" ? [cloudflare({
+      environments: {
+        client: {
+          build: {
+            outDir: "dist/client",
+          },
+        },
+        worker: {
+          build: {
+            outDir: "dist/server",
+          },
+        },
+      },
+    })] : []),
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+      },
+    },
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src/react-app"),
     },
   },
-});
+}));
