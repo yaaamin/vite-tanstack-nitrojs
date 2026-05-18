@@ -1,93 +1,265 @@
-# React + Vite + Hono + Cloudflare Workers + Tailwind CSS + Shadcn + Tanstack Router
+# Vite + React + TanStack Router + Nitro + Cloudflare Workers
 
-<!-- [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/vite-react-template) -->
+A full-stack starter template for building React applications with Vite, TanStack Router, Nitro/H3 API routes, Tailwind CSS, shadcn/ui, and Cloudflare Workers.
 
-This template provides a minimal setup for building a React application with TypeScript and Vite, with Tailwind CSS and ShadCN designed to run on Cloudflare Workers. It features hot module replacement, and the flexibility of Workers deployments.
+The frontend is built as a Vite-powered React SPA, while backend routes are handled by Nitro and deployed to Cloudflare Workers. Static frontend assets are served through the Worker using Cloudflare assets binding, making this a compact setup for building and deploying full-stack edge applications.
 
-<!-- ![React + TypeScript + Vite + Cloudflare Workers](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/fc7b4b62-442b-4769-641b-ad4422d74300/public) -->
+## Tech Stack
 
-<!-- dash-content-start -->
+- **React 19** – UI library for building interactive interfaces
+- **Vite 6** – fast development server and production bundler
+- **TanStack Router** – type-safe file-based routing for React
+- **Nitro / H3** – server runtime and API route handling
+- **Cloudflare Workers** – edge runtime for deployment
+- **Wrangler** – Cloudflare development and deployment CLI
+- **Tailwind CSS 4** – utility-first styling
+- **shadcn/ui** – accessible, customizable UI components
+- **TypeScript** – typed application code
+- **Bun** – package manager and script runner
 
-🚀 Supercharge your web development with this powerful stack:
+## Features
 
-- [**React**](https://react.dev/) - A modern UI library for building interactive interfaces
-- [**Vite**](https://vite.dev/) - Lightning-fast build tooling and development server
-- [**Hono**](https://hono.dev/) - Ultralight, modern backend framework
-- [**Cloudflare Workers**](https://developers.cloudflare.com/workers/) - Edge computing platform for global deployment
-- [**TailwindCSS**](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML.
-- [**Shadcn**](https://ui.shadcn.com/) - A set of beautifully-designed, accessible components and a code distribution platform. Works with your favorite frameworks. Open Source. Open Code.
-- [**Tanstack Router**](https://tanstack.com/router/latest) - A powerful, type-safe router for React, with a focus on performance and developer experience.
+- React + TypeScript frontend
+- File-based routing with TanStack Router
+- API routes under `/api/*` powered by Nitro/H3
+- Cloudflare Worker deployment setup
+- Local development with Vite, Nitro, or Wrangler
+- Tailwind CSS 4 configuration
+- shadcn/ui component setup
+- SPA fallback for frontend routes
+- Example health and users API endpoints
 
-### ✨ Key Features
+## Project Structure
 
-- 🔥 Hot Module Replacement (HMR) for rapid development
-- 📦 TypeScript support out of the box
-- 🛠️ ESLint configuration included
-- ⚡ Zero-config deployment to Cloudflare's global network
-- 🎯 API routes with Hono's elegant routing
-- 🔄 Full-stack development setup
-- 💅 Tailwind CSS for rapid UI development
-- 🎨 Shadcn for beautiful, accessible components
-- 📚 Tanstack Router for powerful routing capabilities
-
-Get started in minutes with local development or deploy directly via the Cloudflare dashboard. Perfect for building modern, performant web applications at the edge.
-
-<!-- dash-content-end -->
+```txt
+.
+├── public/                  # Static public assets
+├── src/
+│   ├── react-app/           # React frontend application
+│   │   ├── components/      # UI components
+│   │   ├── hooks/           # React hooks
+│   │   ├── lib/             # Utilities
+│   │   ├── routes/          # TanStack Router routes
+│   │   ├── index.css        # Tailwind/global styles
+│   │   └── main.tsx         # React entry point
+│   ├── worker/              # Nitro/Cloudflare Worker backend
+│   │   ├── routes/          # Nitro server routes
+│   │   │   ├── api/         # API endpoints
+│   │   │   └── [...].ts     # SPA fallback route
+│   │   └── index.ts         # Worker entry point
+│   └── routeTree.gen.ts     # Generated TanStack route tree
+├── nitro.config.ts          # Nitro server configuration
+├── vite.config.ts           # Vite frontend/build configuration
+├── wrangler.jsonc           # Production Cloudflare Worker config
+├── wrangler.dev.jsonc       # Local Wrangler config
+└── package.json
+```
 
 ## Getting Started
 
-To start a new project with this template, run:
+### Prerequisites
+
+- [Bun](https://bun.sh/)
+- [Cloudflare account](https://dash.cloudflare.com/) for deployment
+- Wrangler authentication if you plan to deploy:
 
 ```bash
-bun create cloudflare --template https://github.com/yaaamin/vite-tanstack-nitrojs
+bunx wrangler login
 ```
 
-A live deployment of this template is available at:
-[https://vite-tanstack-nitrojs.cfs-637.workers.dev/](https://vite-tanstack-nitrojs.cfs-637.workers.dev/)
-
-## Development
-
-Install dependencies:
+### Install dependencies
 
 ```bash
 bun install
 ```
 
-Start the development server with:
+### Start the frontend dev server
 
 ```bash
 bun dev
 ```
 
-Your application will be available at [http://localhost:5173](http://localhost:5173).
+The frontend will be available at:
 
-## Production
+```txt
+http://localhost:5173
+```
 
-Build your project for production:
+By default, Vite proxies `/api` requests to Nitro running on port `3000`.
+
+### Start frontend and Nitro API together
+
+```bash
+bun run dev:full
+```
+
+This runs:
+
+- Nitro on `http://localhost:3000`
+- Vite on `http://localhost:5173`
+
+### Start with Wrangler locally
+
+```bash
+bun run dev:local
+```
+
+Use this when you want to test closer to the Cloudflare Workers environment.
+
+## Available Scripts
+
+```bash
+bun dev
+```
+
+Start the Vite development server.
+
+```bash
+bun run dev:nitro
+```
+
+Run Vite and Nitro together, with Nitro on port `3000`.
+
+```bash
+bun run dev:full
+```
+
+Run Nitro and Vite concurrently.
+
+```bash
+bun run dev:local
+```
+
+Run Wrangler dev and Vite concurrently.
 
 ```bash
 bun run build
 ```
 
-Preview your build locally:
+Build the Nitro backend and Vite frontend.
 
 ```bash
 bun run preview
 ```
 
-Deploy your project to Cloudflare Workers:
+Build and preview the production app locally with Vite preview.
 
 ```bash
-bunx wrangler deploy
+bun run deploy
 ```
 
-## Additional Resources
+Build and deploy to Cloudflare Workers using Wrangler.
 
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
-- [Vite Documentation](https://vitejs.dev/guide/)
-- [React Documentation](https://reactjs.org/)
-- [Nitro Documentation](https://nitro.build/)
-- [H3 Documentation](https://h3.dev/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Shadcn Documentation](https://ui.shadcn.com/docs)
-- [Tanstack Router Documentation](https://tanstack.com/router/latest/docs/overview)
+```bash
+bun run types
+```
+
+Generate Cloudflare Worker types using Wrangler.
+
+## API Routes
+
+API routes live in:
+
+```txt
+src/worker/routes/api
+```
+
+Included routes:
+
+| Route | File | Description |
+| --- | --- | --- |
+| `GET /api/health` | `health.get.ts` | Returns a health status and timestamp |
+| `GET /api/users` | `users.get.ts` | Returns example user data |
+
+Example:
+
+```bash
+curl http://localhost:3000/api/health
+```
+
+Response:
+
+```json
+{
+  "status": "ok",
+  "timestamp": "2026-01-01T00:00:00.000Z"
+}
+```
+
+## Frontend Routing
+
+Frontend routes live in:
+
+```txt
+src/react-app/routes
+```
+
+Included routes:
+
+| Route | File | Description |
+| --- | --- | --- |
+| `/` | `index.tsx` | Home page; loads `/api/health` |
+| `/about` | `about.tsx` | Example about page |
+
+TanStack Router generates the route tree at:
+
+```txt
+src/routeTree.gen.ts
+```
+
+## Styling and UI
+
+Tailwind CSS is configured through the Vite Tailwind plugin. shadcn/ui is configured in `components.json` with aliases pointing to the React app directory:
+
+```txt
+@/components
+@/components/ui
+@/lib
+@/hooks
+```
+
+## Build Output
+
+The build is split into two outputs:
+
+```txt
+dist/client   # Frontend assets
+dist/server   # Nitro/Worker server output
+```
+
+Wrangler serves `dist/client` through the `ASSETS` binding and uses the server entry from `dist/server`.
+
+## Deployment
+
+Deploy to Cloudflare Workers:
+
+```bash
+bun run deploy
+```
+
+This runs the production build and deploys using `wrangler.jsonc`.
+
+You can also deploy manually:
+
+```bash
+bun run build
+bunx wrangler deploy --config wrangler.jsonc
+```
+
+## Creating a New Project From This Template
+
+```bash
+bun create cloudflare --template https://github.com/yaaamin/vite-tanstack-nitrojs
+```
+
+## Notes
+
+- The Vite dev server proxies `/api` requests to `http://localhost:3000`.
+- Nitro is configured with `srcDir: "./src/worker"`.
+- The Cloudflare assets binding is named `ASSETS`.
+- Non-API routes fall back to the frontend SPA.
+- The included API routes are examples and can be replaced with your own application logic.
+
+## License
+
+No license file is currently included. Add a license before publishing or distributing this template.
